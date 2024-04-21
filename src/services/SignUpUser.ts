@@ -2,7 +2,7 @@ import userRepository from '../repository/userRepository';
 import { UserInput } from '../types/User';
 
 // Example usage of createUser service
-async function sighnInUser(createUserPAyload:UserInput) {
+async function sighnUpUser(createUserPAyload:UserInput) {
 
   try {
     const newUser = await userRepository.createUser(createUserPAyload);
@@ -13,4 +13,4 @@ async function sighnInUser(createUserPAyload:UserInput) {
 }
 
 
-export default sighnInUser;
+export default sighnUpUser;

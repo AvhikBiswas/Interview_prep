@@ -20,3 +20,5 @@ async function signInUser(signInPayload: SignInPayload): Promise<string> {
     const token = generateUserAccessToken({id:user.id,email:user.email});
     return token;
   }
+
+  export default signInUser;
