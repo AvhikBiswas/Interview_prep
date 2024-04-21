@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectDB from "./confilg/database";
 
 dotenv.config();
 const port = process.env.PORT || 8000;
@@ -9,6 +10,7 @@ app.get("/", (req, res) => {
   res.send("Path Hitted");
 });
 
-app.listen(port, () => {
+app.listen(port,async () => {
+  await connectDB();
   console.log("Listning on port", port);
 });
