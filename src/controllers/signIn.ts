@@ -8,7 +8,6 @@ async function signInUserController(req: Request, res: Response) {
     // Extract data from request body
     const { email, password }: SignInPayload = req.body;
 
-    // Check if email and password are present
     if (!email) {
       throw new Error('Email is required');
     }
@@ -18,10 +17,8 @@ async function signInUserController(req: Request, res: Response) {
 
     const token = await signInUser({ email, password });
 
-    // Return the token in the response
     return res.status(200).json({ token });
   } catch (error) {
-    // Handle any errors
     console.error('Error signing in user:', error);
     return res.status(401).json({ message: "Somthing went wrong"});
   }

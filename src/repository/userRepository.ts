@@ -30,16 +30,19 @@ class UserRepository {
   }
 
   async addRequestToUser(senderId: string, recipientId: string, type: RequestType) {
+    console.log('senderId------------->', senderId, type)
     try {
       return await User.updateOne(
         { _id: senderId },
-        { $push: { requests: { recipientId, type } } }
+        { $push: { requests: { recipient: recipientId, type } } }
       );
     } catch (error) {
       console.error("Error adding request to user:", error);
       throw new Error("Could not add request to user");
     }
   }
+
 }
 
 export default new UserRepository();
+

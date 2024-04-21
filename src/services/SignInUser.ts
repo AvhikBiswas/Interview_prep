@@ -7,7 +7,6 @@ import bcrypt from 'bcrypt';
 async function signInUser(signInPayload: SignInPayload): Promise<string> {
     const { email, password } = signInPayload;
 
-    // Retrieve user by email
     const user = await userRepository.getUserByEmail(email);
     if (!user) {
       throw new Error('User not found');
