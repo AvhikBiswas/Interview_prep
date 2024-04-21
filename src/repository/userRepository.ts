@@ -1,6 +1,6 @@
-import bcrypt from 'bcryptjs';
 import User from '../model/User';
 import { UserInput } from '../types/User';
+import bcrypt from 'bcrypt';
 
 
 
@@ -16,9 +16,9 @@ class userRepository {
     }
   }
 
-  async getUserById(userId: string): Promise<User | null> {
+  async getUserByEmail(email: string): Promise<User | null> {
     try {
-      const user = await User.findById(userId);
+      const user = await User.findOne({email});
       return user;
     } catch (error) {
       throw new Error('Could not find user');
